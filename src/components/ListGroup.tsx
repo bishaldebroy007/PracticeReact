@@ -5,9 +5,11 @@ import { useState } from "react";
 interface Props {
   cityList: string[];
   heading: string;
+
+  onSelectItem: (cityLight: string) => void;
 }
 
-function ListGroup({ cityList, heading }: Props) {
+function ListGroup({ cityList, heading, onSelectItem }: Props) {
   // Use the heading prop
   // cityList = [];
   // let selectedIndex = 0; //It means no item is selected.
@@ -36,6 +38,7 @@ function ListGroup({ cityList, heading }: Props) {
             key={names}
             onClick={() => {
               setSelectedIndex(index);
+              onSelectItem(names);
             }}
           >
             {names}
