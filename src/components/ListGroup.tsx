@@ -3,6 +3,10 @@ import { MouseEvent } from "react";
 function ListGroup() {
   const cityList = ["Dhaka", "Sylhet", "Chittagong", "Rangpur"];
   // cityList = [];
+  let selectedIndex = -1; //It means no item is selected. 0 means first item is selected.
+
+  // Event Handler:
+  const handleClick = (event: MouseEvent) => console.log(event);
 
   return (
     <>
@@ -12,9 +16,9 @@ function ListGroup() {
         {/* Dynamic Way: */}
         {cityList.map((names, index) => (
           <li
-            className="list-group-item"
+            className="list-group-item active"
             key={names}
-            onClick={() => console.log(names, index)}
+            onClick={handleClick}
           >
             {names}
           </li>
