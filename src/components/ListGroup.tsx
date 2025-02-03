@@ -1,34 +1,46 @@
-import { MouseEvent } from "react";
+//import { MouseEvent, useState } from "react";
 
-function ListGroup() {
-  const cityList = ["Dhaka", "Sylhet", "Chittagong", "Rangpur"];
+import { useState } from "react";
+
+interface Props {
+  cityList: string[];
+  heading: string;
+}
+
+function ListGroup({ cityList, heading }: Props) {
+  // Use the heading prop
   // cityList = [];
-  let selectedIndex = -1; //It means no item is selected. 0 means first item is selected.
+  // let selectedIndex = 0; //It means no item is selected.
+  // 0 means first item is selected.
+
+  //Hook
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+  // array[0]; //It will give the value of the state.
+  // array[1]; //It will give the function to update the state.
 
   // Event Handler:
-  const handleClick = (event: MouseEvent) => console.log(event);
+  // const handleClick = (event: MouseEvent) => console.log(event);
 
   return (
     <>
-      <h1>List</h1>
+      <h2>{heading}</h2>
       {cityList.length === 0 && <p>No item found</p>}
       <ul className="list-group">
-        {/* Dynamic Way: */}
         {cityList.map((names, index) => (
           <li
-            className="list-group-item active"
+            className={
+              selectedIndex === index
+                ? "list-group-item active"
+                : "list-group-item"
+            }
             key={names}
-            onClick={handleClick}
+            onClick={() => {
+              setSelectedIndex(index);
+            }}
           >
             {names}
           </li>
         ))}
-        {/* Old Ways: */}
-        {/* <li className="list-group-item">An item</li>
-        <li className="list-group-item">A second item</li>
-        <li className="list-group-item">A third item</li>
-        <li className="list-group-item">A fourth item</li>
-        <li className="list-group-item">And a fifth one</li> */}
       </ul>
     </>
   );

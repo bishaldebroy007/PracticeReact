@@ -2,9 +2,11 @@
 import ListGroup from "./components/ListGroup";
 
 function App() {
+  const cityList = ["Dhaka", "Sylhet", "Chittagong", "Rangpur"];
+
   return (
     <>
-      <ListGroup />
+      <ListGroup cityList={cityList} heading="Cities" />
     </>
   );
 }
